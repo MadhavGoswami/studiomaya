@@ -174,7 +174,7 @@
               </button>
 
               <img
-                src="public/assets/ProjectImages/Lead Architect Photo.jpg"
+                src="/assets/ProjectImages/Lead Architect Photo.jpg"
                 alt="Ar Mayank Yadav"
                 className="w-48 h-64 md:w-56 md:h-72 lg:w-64 lg:h-80 object-cover rounded-lg"
               />
