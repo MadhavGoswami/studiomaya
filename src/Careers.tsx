@@ -73,12 +73,12 @@ const JoinOurTeam: React.FC = () => {
         {/* Image Section */}
         <div className="relative w-full md:w-1/2 h-64 md:h-auto group overflow-hidden">
           <img
-            src="public/assets/ProjectImages/JoinMe2.png"
+            src="/assets/ProjectImages/JoinMe2.png"
             alt="Default"
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0"
           />
           <img
-            src="public/assets/ProjectImages/JoinMe1.jpg"
+            src="/assets/ProjectImages/JoinMe1.jpg"
             alt="Hover"
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100"
           />
