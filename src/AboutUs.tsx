@@ -15,16 +15,16 @@
   };
 
   const teamMembers = [
-    { name: 'Mayank Yadav', title: 'Founder & Design Head', img: 'public/assets/ProjectImages/1.png' },
-    { name: 'Deeksha Goswami', title: 'Principal Architect | Planner', img: 'public/assets/ProjectImages/3.png' },
-    { name: 'Ravinder Singh', title: 'Structure Consultant', img: 'public/assets/ProjectImages/2.png' },
-    { name: 'Charan Bhandari', title: 'Structure Consultant', img: 'public/assets/ProjectImages/4.png' },
-    { name: 'Chanderpal Kumar', title: 'MEP Consultant', img: 'public/assets/ProjectImages/7.png' },
-    { name: 'Suraj', title: 'Architect', img: 'public/assets/ProjectImages/9.png' },
-    { name: 'Pankaj Pal', title: 'Architect', img: 'public/assets/ProjectImages/1.png' },
-    { name: 'Annu Garg', title: 'Architect', img: 'public/assets/ProjectImages/8.png' },
-    { name: 'Ravi Gupta', title: 'Intern', img: 'public/assets/ProjectImages/4.png' },
-    { name: 'Siddhart', title: 'Intern', img: 'public/assets/ProjectImages/2.png' },
+    { name: 'Mayank Yadav', title: 'Founder & Design Head', img: '/assets/ProjectImages/1.png' },
+    { name: 'Deeksha Goswami', title: 'Principal Architect | Planner', img: '/assets/ProjectImages/3.png' },
+    { name: 'Ravinder Singh', title: 'Structure Consultant', img: '/assets/ProjectImages/2.png' },
+    { name: 'Charan Bhandari', title: 'Structure Consultant', img: '/assets/ProjectImages/4.png' },
+    { name: 'Chanderpal Kumar', title: 'MEP Consultant', img: '/assets/ProjectImages/7.png' },
+    { name: 'Suraj', title: 'Architect', img: '/assets/ProjectImages/9.png' },
+    { name: 'Pankaj Pal', title: 'Architect', img: '/assets/ProjectImages/1.png' },
+    { name: 'Annu Garg', title: 'Architect', img: '/assets/ProjectImages/8.png' },
+    { name: 'Ravi Gupta', title: 'Intern', img: '/assets/ProjectImages/4.png' },
+    { name: 'Siddhart', title: 'Intern', img: '/assets/ProjectImages/2.png' },
   ];
 
   const AboutUs: React.FC = () => {
@@ -64,7 +64,7 @@
             custom={1}
           >
             <img
-              src="public/assets/ProjectImages/Lead Architect Photo.jpg"
+              src="/assets/ProjectImages/Lead Architect Photo.jpg"
               alt="Ar Mayank Yadav"
               className="w-56 h-72 md:w-64 md:h-80 lg:w-72 lg:h-80 object-cover rounded-lg cursor-pointer transition-transform transform hover:scale-105"
               onClick={toggleCard}
