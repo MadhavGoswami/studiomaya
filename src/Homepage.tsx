@@ -56,18 +56,12 @@ const Homepage: React.FC = () => {
       <div className="flex flex-col lg:hidden h-full">
         {/* Top Section */}
         <div className="relative w-full h-1/2 overflow-hidden">
-          {topSliderImages.map((img, idx) => (
-            <img
-              key={idx}
-              src={img}
-              alt=""
-              className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out transform ${
-                idx === currentTop
-                  ? 'opacity-100 scale-110 z-10'
-                  : 'opacity-0 scale-100 z-0'
-              }`}
-            />
-          ))}
+          <img
+            src={topSliderImages[currentTop]}
+            alt="Top Slide"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out transform scale-110 z-10"
+          />
           <div className="absolute inset-0 bg-black opacity-10" />
           <div className="absolute inset-0 flex items-center justify-center">
             <h1 className="text-white text-4xl md:text-6xl font-extrabold hover:scale-110 transition-transform duration-300">
@@ -78,18 +72,12 @@ const Homepage: React.FC = () => {
 
         {/* Bottom Section */}
         <div className="relative w-full h-1/2 overflow-hidden">
-          {bottomSliderImages.map((img, idx) => (
-            <img
-              key={idx}
-              src={img}
-              alt=""
-              className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out transform ${
-                idx === currentBottom
-                  ? 'opacity-100 scale-110 z-10'
-                  : 'opacity-0 scale-100 z-0'
-              }`}
-            />
-          ))}
+          <img
+            src={bottomSliderImages[currentBottom]}
+            alt="Bottom Slide"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out transform scale-110 z-10"
+          />
           <div className="absolute inset-0 bg-black opacity-10" />
           <div className="absolute inset-0 flex items-center justify-center">
             <h1 className="text-white text-4xl md:text-6xl font-extrabold hover:scale-110 transition-transform duration-300">
@@ -108,18 +96,12 @@ const Homepage: React.FC = () => {
 
       {/* Large Screens - Zoom Slider */}
       <div className="hidden lg:block absolute inset-0 overflow-hidden">
-        {imagesLarge.map((img, idx) => (
-          <img
-            key={idx}
-            src={img}
-            alt=""
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out transform ${
-              currentLarge === idx
-                ? 'opacity-100 scale-110 z-10'
-                : 'opacity-0 scale-100 z-0'
-            }`}
-          />
-        ))}
+        <img
+          src={imagesLarge[currentLarge]}
+          alt="Large Background"
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out transform scale-110 z-10"
+        />
         <div className="absolute inset-0 bg-black opacity-20" />
       </div>
     </div>
