@@ -20,7 +20,7 @@ const Homepage: React.FC = () => {
             muted
             loop
             playsInline
-            src="assets/out.mp4"
+            src="/assets/out.mp4"
           />
           <div className="absolute inset-0 bg-black opacity-10"></div>
           <div className="absolute inset-0 flex items-center justify-center">
@@ -64,7 +64,7 @@ const Homepage: React.FC = () => {
           muted
           loop
           playsInline
-          src="assets/backgroundvideo23mb.mp4"
+          src="/assets/250606 Home Page Video 13Mb_preview.webm"
         />
         <div className="absolute inset-0 bg-black opacity-20"></div>
         {/* No text on large screens */}
