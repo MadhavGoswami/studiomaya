@@ -64,7 +64,7 @@ const Homepage: React.FC = () => {
           muted
           loop
           playsInline
-          src="/assets/250606 Home Page Video 13Mb_preview.webm"
+          src="/assets/trial2.mp4"
         />
         <div className="absolute inset-0 bg-black opacity-20"></div>
         {/* No text on large screens */}
