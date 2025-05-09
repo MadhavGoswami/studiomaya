@@ -187,9 +187,7 @@ const AboutUs: React.FC = () => {
 
             <div className="flex flex-col space-y-4 px-2">
               <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 text-center">Ar Mayank Yadav</h2>
-              <p className="text-lg md:text-xl font-medium text-gray-600 text-center">
-                Design Head & Principal Architect
-              </p>
+             
               <div className="text-gray-500 font-medium text-xl md:text-2xl text-center">Founder & Design Head</div>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-600 text-justify">
                 Studio Ma:Ya is led by Mayank Yadav, the Founder, Design Head & Principal Architect, whose bold,

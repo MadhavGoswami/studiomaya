@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
-// Define the Project type
 const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Competition'];
 
 type Project = {
@@ -185,40 +184,39 @@ const ProjectPage: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-  {displayedProjects.map((project, index) => (
-    <motion.div
-      key={project.id}
-      onClick={() => openProjectSlider(project)}
-      className="relative overflow-hidden cursor-pointer w-full aspect-[3/2] rounded-lg border-2 border-gray-300 shadow-lg hover:shadow-xl transition"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={attentionVariant}
-      transition={{ delay: index * 0.1 }}
-    >
-      <img
-        src={project.images[0]}
-        alt={project.title}
-        loading="lazy"
-        className="w-full h-full object-cover rounded-lg"
-      />
-      <motion.div
-        className="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition flex flex-col items-center justify-center text-center p-6 rounded-lg"
-        initial="hidden"
-        whileHover="visible"
-        variants={overlayVariant}
-      >
-        <motion.h3 className="text-3xl font-bold text-white mb-4">
-          {project.title}
-        </motion.h3>
-        <motion.p className="text-2xl text-gray-200 px-[60px]">
-          {project.description}
-        </motion.p>
-      </motion.div>
-    </motion.div>
-  ))}
-</div>
-
+        {displayedProjects.map((project, index) => (
+          <motion.div
+            key={project.id}
+            onClick={() => openProjectSlider(project)}
+            className="relative overflow-hidden cursor-pointer w-full aspect-[3/2] rounded-lg border-2 border-gray-300 shadow-lg hover:shadow-xl transition"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={attentionVariant}
+            transition={{ delay: index * 0.1 }}
+          >
+            <img
+              src={project.images[0]}
+              alt={project.title}
+              loading="lazy"
+              className="w-full h-full object-cover rounded-lg"
+            />
+            <motion.div
+              className="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition flex flex-col items-center justify-center text-center p-6 rounded-lg"
+              initial="hidden"
+              whileHover="visible"
+              variants={overlayVariant}
+            >
+              <motion.h3 className="text-3xl font-bold text-white mb-4">
+                {project.title}
+              </motion.h3>
+              <motion.p className="text-2xl text-gray-200 px-[60px]">
+                {project.description}
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        ))}
+      </div>
 
       {visibleCount < filteredProjects.length && (
         <motion.div
