@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import { useSwipeable } from 'react-swipeable';
 
+// Dummy imports for structure
+// Replace with your actual data
+// import { Project, projectData, categories } from './your-data-source';
+
+// Define the Project type
 const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Competition'];
 
 type Project = {
@@ -12,7 +18,7 @@ type Project = {
 };
 
 const projectData: Project[] = [
-  { id: 18, category: 'Commercial', title: 'Neel David Salon', description: 'Refined Elegance Meets Urban Chic', images: ['assets/ProjectImages/Commercial/Neeldavid Salon/1.jpg','assets/ProjectImages/Commercial/Neeldavid Salon/2.jpg','assets/ProjectImages/Commercial/Neeldavid Salon/3.jpg','assets/ProjectImages/Commercial/Neeldavid Salon/4.jpg','assets/ProjectImages/Commercial/Neeldavid Salon/5.jpg','assets/ProjectImages/Commercial/Neeldavid Salon/6.jpg'] },
+  { id: 18, category: 'Commercial', title: 'Neel David Salon', description: 'Refined Elegance Meets Urban Chic', images: ['assets/ProjectImages/Commercial/Neeldavid Salon/1.jpg','assets/ProjectImages/Commercial/Neeldavid Salon/2.jpg','/assets/ProjectImages/Commercial/Neeldavid Salon/3.jpg','assets/ProjectImages/Commercial/Neeldavid Salon/4.jpg','assets/ProjectImages/Commercial/Neeldavid Salon/5.jpg','assets/ProjectImages/Commercial/Neeldavid Salon/6.jpg'] },
   { id: 19, category: 'Commercial', title: 'V Law Attorney', description: 'Objection Overruled: V Law Attorneys Redefine the Verdict on Modern Office Design', images: ['assets/ProjectImages/Commercial/V Law Attorney/1.jpg','assets/ProjectImages/Commercial/V Law Attorney/2.jpg','assets/ProjectImages/Commercial/V Law Attorney/3.jpg','assets/ProjectImages/Commercial/V Law Attorney/4.jpg','assets/ProjectImages/Commercial/V Law Attorney/5.jpg','assets/ProjectImages/Commercial/V Law Attorney/6.jpg','assets/ProjectImages/Commercial/V Law Attorney/7.jpg','assets/ProjectImages/Commercial/V Law Attorney/8.jpg','assets/ProjectImages/Commercial/V Law Attorney/9.jpg'] },
   { id: 13, category: 'Residential', title: 'Oklahoma Housing: Elevated Living', description: 'A Vision for Urban Green Architecture', images: ['assets/ProjectImages/Residential/Okhlahoma Housing/1.jpg','assets/ProjectImages/Residential/Okhlahoma Housing/Shartel Tower Concept Design.gif'] },
   { id: 11, category: 'Residential', title: 'Kalkaji Residence: Kalkaji Residence', description: 'A Fusion of Earthy Tradition and Modern Steadiness', images: ['assets/ProjectImages/Residential/Kalkaji Residence/1.jpg','assets/ProjectImages/Residential/Kalkaji Residence/2.jpg','assets/ProjectImages/Residential/Kalkaji Residence/Bedroom 1 Toilet 1.jpg','assets/ProjectImages/Residential/Kalkaji Residence/Bedroom 2 1.jpg','assets/ProjectImages/Residential/Kalkaji Residence/Bedroom 2 2.jpg','assets/ProjectImages/Residential/Kalkaji Residence/Bedroom 2.jpg','assets/ProjectImages/Residential/Kalkaji Residence/Common Toilet.jpg','assets/ProjectImages/Residential/Kalkaji Residence/Kitchen Cum Dining.jpg'] },
@@ -63,6 +69,7 @@ const ProjectPage: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(8);
+  const [isPaused, setIsPaused] = useState(false);
   const imgRef = useRef<HTMLImageElement | null>(null);
 
   const filteredProjects =
@@ -99,7 +106,6 @@ const ProjectPage: React.FC = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selectedProject) return;
-
       if (e.key === 'ArrowLeft') handlePrevImage();
       else if (e.key === 'ArrowRight') handleNextImage();
       else if (e.key === 'Escape') closeSlider();
@@ -130,14 +136,21 @@ const ProjectPage: React.FC = () => {
   }, [activeCategory]);
 
   useEffect(() => {
-    if (!selectedProject) return;
+    if (!selectedProject || isPaused) return;
 
     const interval = setInterval(() => {
       handleNextImage();
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [selectedProject, handleNextImage]);
+  }, [selectedProject, handleNextImage, isPaused]);
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleNextImage,
+    onSwipedRight: handlePrevImage,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
 
   return (
     <div className="min-h-screen p-4 bg-gray-100">
@@ -252,22 +265,31 @@ const ProjectPage: React.FC = () => {
             >
               &times;
             </button>
-            <div className="relative w-full flex items-center justify-center">
+
+            <div
+              className="relative w-full flex items-center justify-center"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
               <button
                 onClick={handlePrevImage}
                 className="absolute top-1/2 -translate-y-1/2 text-white p-3 text-4xl font-bold rounded-full transition left-4 lg:left-8"
               >
                 &#8249;
               </button>
-              <motion.img
-                ref={imgRef}
-                src={selectedProject.images[currentImageIndex]}
-                alt={`${selectedProject.title} ${currentImageIndex + 1}`}
-                className="w-auto max-h-[80vh] object-contain rounded-lg shadow-lg"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-              />
+
+              <div {...swipeHandlers}>
+                <motion.img
+                  ref={imgRef}
+                  src={selectedProject.images[currentImageIndex]}
+                  alt={`${selectedProject.title} ${currentImageIndex + 1}`}
+                  className="w-auto max-h-[80vh] object-contain rounded-lg shadow-lg"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                />
+              </div>
+
               <button
                 onClick={handleNextImage}
                 className="absolute top-1/2 -translate-y-1/2 text-white p-3 text-4xl font-bold rounded-full transition right-4 lg:right-8"
