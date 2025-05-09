@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
-
 // Dummy imports for structure
 // Replace with your actual data
 // import { Project, projectData, categories } from './your-data-source';
@@ -70,6 +69,7 @@ const ProjectPage: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(8);
   const [isPaused, setIsPaused] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
   const imgRef = useRef<HTMLImageElement | null>(null);
 
   const filteredProjects =
@@ -104,6 +104,15 @@ const ProjectPage: React.FC = () => {
   }, [selectedProject]);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selectedProject) return;
       if (e.key === 'ArrowLeft') handlePrevImage();
@@ -136,14 +145,16 @@ const ProjectPage: React.FC = () => {
   }, [activeCategory]);
 
   useEffect(() => {
-    if (!selectedProject || isPaused) return;
+  const isLargeScreen = window.innerWidth >= 768;
 
-    const interval = setInterval(() => {
-      handleNextImage();
-    }, 2000);
+  if (!selectedProject || isPaused || !isLargeScreen) return;
 
-    return () => clearInterval(interval);
-  }, [selectedProject, handleNextImage, isPaused]);
+  const interval = setInterval(() => {
+    handleNextImage();
+  }, 1500); // or your preferred speed
+
+  return () => clearInterval(interval);
+}, [selectedProject, handleNextImage, isPaused]);
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: handleNextImage,
@@ -268,8 +279,8 @@ const ProjectPage: React.FC = () => {
 
             <div
               className="relative w-full flex items-center justify-center"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
+              onMouseEnter={() => isLargeScreen && setIsPaused(true)}
+              onMouseLeave={() => isLargeScreen && setIsPaused(false)}
             >
               <button
                 onClick={handlePrevImage}
