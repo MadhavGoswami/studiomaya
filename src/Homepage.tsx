@@ -5,19 +5,38 @@ const imagesLarge = [
   '/assets/1920x1080/1.jpg',
   '/assets/1920x1080/2.jpg',
   '/assets/1920x1080/3.jpg',
-  '/assets/ProjectImages/Main Page/View 2.jpg',
+  '/assets/1920x1080/5.jpg',
+  '/assets/1920x1080/6.jpg',
+  '/assets/1920x1080/7.1.jpg',
+  '/assets/1920x1080/7.jpg',
+  '/assets/1920x1080/8.jpg',
+  '/assets/1920x1080/9.jpg',
+  '/assets/1920x1080/10.jpg',
+  '/assets/1920x1080/11.jpg',
+  '/assets/1920x1080/12.jpg',
+  '/assets/1920x1080/13.jpg',
+  '/assets/1920x1080/14.jpg',
+  
 ];
 
 const topSliderImages = [
   '/assets/1920x1080/1.jpg',
   '/assets/1920x1080/2.jpg',
   '/assets/1920x1080/3.jpg',
+  '/assets/1920x1080/5.jpg',
+  '/assets/1920x1080/6.jpg',
+  '/assets/1920x1080/7.1.jpg',
+  '/assets/1920x1080/7.jpg',
+  '/assets/1920x1080/8.jpg',
 ];
 
 const bottomSliderImages = [
   '/assets/1920x1080/9.jpg',
+  '/assets/1920x1080/10.jpg',
+  '/assets/1920x1080/11.jpg',
   '/assets/1920x1080/12.jpg',
   '/assets/1920x1080/13.jpg',
+  '/assets/1920x1080/14.jpg',
 ];
 
 const Homepage: React.FC = () => {
@@ -49,7 +68,7 @@ const Homepage: React.FC = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
-      <div className="relative z-20">
+      <div className="relative z-40">
         <Navbar setMenuOpen={setIsMenuOpen} />
       </div>
 

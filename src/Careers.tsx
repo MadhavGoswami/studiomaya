@@ -70,19 +70,30 @@ const JoinOurTeam: React.FC = () => {
         animate={inView ? 'visible' : 'hidden'}
         custom={0.2}
       >
-        {/* Image Section */}
-        <div className="relative w-full md:w-1/2 h-64 md:h-auto group overflow-hidden">
-          <img
-            src="/assets/ProjectImages/JoinMe2.png"
-            alt="Default"
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0"
-          />
-          <img
-            src="/assets/ProjectImages/JoinMe1.jpg"
-            alt="Hover"
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100"
-          />
-        </div>
+       {/* Image Section */}
+<div className="relative w-full md:w-1/2 h-64 md:h-auto group overflow-hidden">
+  {/* Default Image */}
+  <img
+    src="/assets/ProjectImages/JoinMe2.png"
+    alt="Default"
+    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0"
+  />
+
+  {/* Hover Image */}
+  <img
+    src="/assets/ProjectImages/JoinMe1.jpg"
+    alt="Hover"
+    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+  />
+
+  {/* Cursor PNG at bottom right */}
+  <img
+    src="/assets/pointer.png" // ✅ Make sure this path is correct
+    alt="Cursor Icon"
+    className="absolute bottom-3 right-3 w-12 h-12 z-20 pointer-events-none"
+  />
+</div>
+
 
         {/* Form Section */}
         <div className="w-full md:w-1/2 p-6 md:p-8 lg:p-10">
