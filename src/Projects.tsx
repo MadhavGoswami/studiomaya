@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
+// Define the Project type
 const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Competition'];
 
 type Project = {
@@ -38,9 +39,6 @@ const projectData: Project[] = [
   { id: 24, category: 'Competition', title: 'CPDI:"', description: '"Nyubu: A Harmonious Blend of Tradition, Modernism, and Feminine Power in Design', images: ['assets/ProjectImages/Competition/CPDI/c1.jpg','assets/ProjectImages/Competition/CPDI/c2.jpg'] },
 ];
 
-
-
-
 const attentionVariant = {
   hidden: { opacity: 0, scale: 0.95, y: 30 },
   visible: {
@@ -66,12 +64,12 @@ const ProjectPage: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(8);
-
   const imgRef = useRef<HTMLImageElement | null>(null);
 
-  const filteredProjects = activeCategory === 'All'
-    ? projectData
-    : projectData.filter((project) => project.category === activeCategory);
+  const filteredProjects =
+    activeCategory === 'All'
+      ? projectData
+      : projectData.filter((project) => project.category === activeCategory);
 
   const displayedProjects = filteredProjects.slice(0, visibleCount);
 
@@ -137,22 +135,21 @@ const ProjectPage: React.FC = () => {
 
     const interval = setInterval(() => {
       handleNextImage();
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [selectedProject, handleNextImage]);
 
   return (
     <div className="min-h-screen p-4 bg-gray-100">
-     <motion.h2
-  initial="hidden"
-  animate="visible"
-  variants={attentionVariant}
-  className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 mr-[30px] mt-[50px]"
->
-  Projects
-</motion.h2>
-
+      <motion.h2
+        initial="hidden"
+        animate="visible"
+        variants={attentionVariant}
+        className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 mr-[30px] mt-[50px]"
+      >
+        Projects
+      </motion.h2>
 
       <div className="text-center mb-6">
         <div className="flex flex-wrap justify-center gap-4">
