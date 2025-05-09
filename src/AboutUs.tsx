@@ -81,7 +81,7 @@ const AboutUs: React.FC = () => {
             className="w-56 h-72 md:w-64 md:h-80 lg:w-72 lg:h-80 object-cover rounded-lg cursor-pointer transition-transform transform hover:scale-105"
             onClick={toggleCard}
           />
-          <div className="mt-3 text-2xl font-semibold text-gray-800 text-center">Ar Mayank Yadav</div>
+          <div className="mt-1 text-2xl font-semibold text-gray-800 text-center">Ar Mayank Yadav</div>
           <div className="text-gray-500 text-lg font-medium mt-1 text-center">Founder & Design Head</div>
         </motion.div>
 
@@ -99,7 +99,7 @@ const AboutUs: React.FC = () => {
 
             At Studio Ma:Ya, we believe that every space has a story waiting to be told. Based in the heart of New Delhi,
             we are a multidisciplinary design studio specializing in architecture and interior design, dedicated to shaping
-            environments that are innovative, sustainable, and deeply responsive to their context.Our approach blends functionality with elegance, tradition with modernity, and vision with detail. From concept to completion, we immerse ourselves in each project—be it residential, commercial, institutional, or hospitality—delivering spaces that are not only visually compelling but also deeply human-centered.
+            environments that are innovative, sustainable, and deeply responsive to their context. Our approach blends functionality with elegance, tradition with modernity, and vision with detail. From concept to completion, we immerse ourselves in each project—be it residential, commercial, institutional, or hospitality—delivering spaces that are not only visually compelling but also deeply human-centered.
           </p>
           <p className="text-lg sm:text-xl md:text-2xl lg:text-2xl text-gray-600 text-justify pl-10 pr-4 sm:pl-12 sm:pr-6 lg:pl-0 lg:pr-0">
 
@@ -186,7 +186,7 @@ const AboutUs: React.FC = () => {
             />
 
             <div className="flex flex-col space-y-4 px-2">
-              <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 text-center">Mayank Yadav</h2>
+              <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 text-center">Ar Mayank Yadav</h2>
               <p className="text-lg md:text-xl font-medium text-gray-600 text-center">
                 Design Head & Principal Architect
               </p>

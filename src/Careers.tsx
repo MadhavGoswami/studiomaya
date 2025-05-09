@@ -157,7 +157,7 @@ const JoinOurTeam: React.FC = () => {
             custom={1.4}
           >
             At Studio Ma:Ya, we are constantly looking to enrich our studio with individuals from diverse
-            backgrounds, such as Architecture, Interior Design, Literature, Graphic Design, and Product Design.
+            backgrounds, such as Architecture, Interior Design, Planning, Graphic Design, and Product Design.
             Any interest towards design, or being highly motivated and organized, is welcome.
           </motion.p>
         </div>
