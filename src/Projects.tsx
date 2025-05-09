@@ -135,7 +135,7 @@ const ProjectPage: React.FC = () => {
 
     const interval = setInterval(() => {
       handleNextImage();
-    }, 2000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [selectedProject, handleNextImage]);
