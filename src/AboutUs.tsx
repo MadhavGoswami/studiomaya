@@ -27,16 +27,16 @@ const fadeInOnly = {
 };
 
 const teamMembers = [
-  { name: 'Mayank Yadav', title: 'Founder & Design Head', img: '/assets/ProjectImages/1.png' },
-  { name: 'Deeksha Goswami', title: 'Principal Architect | Planner', img: '/assets/ProjectImages/3.png' },
-  { name: 'Ravinder Singh', title: 'Structure Consultant', img: '/assets/ProjectImages/2.png' },
-  { name: 'Charan Bhandari', title: 'Structure Consultant', img: '/assets/ProjectImages/4.png' },
-  { name: 'Chanderpal Kumar', title: 'MEP Consultant', img: '/assets/ProjectImages/7.png' },
-  { name: 'Suraj', title: 'Architect', img: '/assets/ProjectImages/9.png' },
-  { name: 'Pankaj Pal', title: 'Architect', img: '/assets/ProjectImages/1.png' },
-  { name: 'Annu Garg', title: 'Architect', img: '/assets/ProjectImages/8.png' },
-  { name: 'Ravi Gupta', title: 'Intern', img: '/assets/ProjectImages/4.png' },
-  { name: 'Siddhart', title: 'Intern', img: '/assets/ProjectImages/2.png' },
+  { name: 'Mayank Yadav', title: 'Founder & Design Head', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/1_juyqpn.png' },
+  { name: 'Deeksha Goswami', title: 'Principal Architect | Planner', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/6_squt2y.png' },
+  { name: 'Ravinder Singh', title: 'Structure Consultant', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/2_mj2y8y.png' },
+  { name: 'Charan Bhandari', title: 'Structure Consultant', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/4_bvmu3p.png' },
+  { name: 'Chanderpal Kumar', title: 'MEP Consultant', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876403/7_rcu035.png' },
+  { name: 'Suraj', title: 'Architect', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876405/9_di7ufl.png' },
+  { name: 'Pankaj Pal', title: 'Architect', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/1_juyqpn.png' },
+  { name: 'Annu Garg', title: 'Architect', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876405/8_mtsfac.png' },
+  { name: 'Ravi Gupta', title: 'Intern', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/4_bvmu3p.png' },
+  { name: 'Siddhart', title: 'Intern', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/2_mj2y8y.png' },
 ];
 
 const AboutUs: React.FC = () => {
@@ -76,7 +76,7 @@ const AboutUs: React.FC = () => {
           custom={1}
         >
           <img
-            src="/assets/ProjectImages/Lead Architect Photo.jpg"
+            src="https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876444/Lead_Architect_Photo_ea4wyu.jpg"
             alt="Ar Mayank Yadav"
             className="w-56 h-72 md:w-64 md:h-80 lg:w-72 lg:h-80 object-cover rounded-lg cursor-pointer transition-transform transform hover:scale-105"
             onClick={toggleCard}
@@ -180,7 +180,7 @@ const AboutUs: React.FC = () => {
             </button>
 
             <img
-              src="/assets/ProjectImages/Lead Architect Photo.jpg"
+              src="https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876444/Lead_Architect_Photo_ea4wyu.jpg"
               alt="Ar Mayank Yadav"
               className="w-48 h-64 md:w-56 md:h-72 lg:w-64 lg:h-80 object-cover rounded-lg"
             />
