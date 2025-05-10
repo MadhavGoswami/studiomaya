@@ -27,16 +27,16 @@ const fadeInOnly = {
 };
 
 const teamMembers = [
-  { name: 'Mayank Yadav', title: 'Founder & Design Head', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/1_juyqpn.png' },
-  { name: 'Deeksha Goswami', title: 'Principal Architect | Planner', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/6_squt2y.png' },
-  { name: 'Ravinder Singh', title: 'Structure Consultant', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/2_mj2y8y.png' },
-  { name: 'Charan Bhandari', title: 'Structure Consultant', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/4_bvmu3p.png' },
-  { name: 'Chanderpal Kumar', title: 'MEP Consultant', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876403/7_rcu035.png' },
-  { name: 'Suraj', title: 'Architect', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876405/9_di7ufl.png' },
-  { name: 'Pankaj Pal', title: 'Architect', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/1_juyqpn.png' },
-  { name: 'Annu Garg', title: 'Architect', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876405/8_mtsfac.png' },
-  { name: 'Ravi Gupta', title: 'Intern', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/4_bvmu3p.png' },
-  { name: 'Siddhart', title: 'Intern', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876402/2_mj2y8y.png' },
+  { name: 'Mayank Yadav', title: 'Founder & Design Head', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876402/1_juyqpn.png' },
+  { name: 'Deeksha Goswami', title: 'Principal Architect | Planner', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876402/6_squt2y.png' },
+  { name: 'Ravinder Singh', title: 'Structure Consultant', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876402/2_mj2y8y.png' },
+  { name: 'Charan Bhandari', title: 'Structure Consultant', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876402/4_bvmu3p.png' },
+  { name: 'Chanderpal Kumar', title: 'MEP Consultant', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876403/7_rcu035.png' },
+  { name: 'Suraj', title: 'Architect', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876405/9_di7ufl.png' },
+  { name: 'Pankaj Pal', title: 'Architect', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876402/1_juyqpn.png' },
+  { name: 'Annu Garg', title: 'Architect', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876405/8_mtsfac.png' },
+  { name: 'Ravi Gupta', title: 'Intern', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876402/4_bvmu3p.png' },
+  { name: 'Siddhart', title: 'Intern', img: 'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876402/2_mj2y8y.png' },
 ];
 
 const AboutUs: React.FC = () => {
@@ -75,12 +75,19 @@ const AboutUs: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           custom={1}
         >
-          <img
-            src="https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876444/Lead_Architect_Photo_ea4wyu.jpg"
-            alt="Ar Mayank Yadav"
-            className="w-56 h-72 md:w-64 md:h-80 lg:w-72 lg:h-80 object-cover rounded-lg cursor-pointer transition-transform transform hover:scale-105"
-            onClick={toggleCard}
-          />
+         <div className="relative w-fit">
+  <img
+    src="https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876444/Lead_Architect_Photo_ea4wyu.jpg"
+    alt="Ar Mayank Yadav"
+    className="w-56 h-72 md:w-64 md:h-80 lg:w-72 lg:h-80 object-cover rounded-lg cursor-pointer transition-transform transform hover:scale-105"
+    onClick={toggleCard}
+  />
+  <img
+    src="https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746901194/pointer_qfj7r7.png"
+    alt="Pointer Icon"
+    className="w-[50px] h-[50px] absolute top-2 right-2 pointer-events-none"
+  />
+</div>
           <div className="mt-1 text-2xl font-semibold text-gray-800 text-center">Ar Mayank Yadav</div>
           <div className="text-gray-500 text-lg font-medium mt-1 text-center">Founder & Design Head</div>
         </motion.div>
@@ -180,7 +187,7 @@ const AboutUs: React.FC = () => {
             </button>
 
             <img
-              src="https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876444/Lead_Architect_Photo_ea4wyu.jpg"
+              src="https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876444/Lead_Architect_Photo_ea4wyu.jpg"
               alt="Ar Mayank Yadav"
               className="w-48 h-64 md:w-56 md:h-72 lg:w-64 lg:h-80 object-cover rounded-lg"
             />

@@ -127,7 +127,7 @@ export default function ContactUs() {
           >
             <a href="#home">
               <img
-                src="/assets/ProjectImages/logowhite.png"
+                src="https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876446/logowhite_q7vlsz.png"
                 alt="Studio Maya Logo"
                 className="w-60 h-auto mb-3 mx-auto cursor-pointer"
               />

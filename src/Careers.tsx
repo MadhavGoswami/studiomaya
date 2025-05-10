@@ -74,21 +74,21 @@ const JoinOurTeam: React.FC = () => {
 <div className="relative w-full md:w-1/2 h-64 md:h-auto group overflow-hidden">
   {/* Default Image */}
   <img
-    src="/assets/ProjectImages/JoinMe2.png"
+    src="https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876443/JoinMe2_y9sr5a.png"
     alt="Default"
     className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0"
   />
 
   {/* Hover Image */}
   <img
-    src="/assets/ProjectImages/JoinMe1.jpg"
+    src="https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876442/JoinMe1_lbxnlr.jpg"
     alt="Hover"
     className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100"
   />
 
   {/* Cursor PNG at bottom right */}
   <img
-    src="/assets/pointer.png" // ✅ Make sure this path is correct
+    src="https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746901194/pointer_qfj7r7.png" // ✅ Make sure this path is correct
     alt="Cursor Icon"
     className="absolute bottom-3 right-3 w-12 h-12 z-20 pointer-events-none"
   />

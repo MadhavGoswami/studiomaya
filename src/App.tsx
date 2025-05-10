@@ -11,8 +11,29 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Improved loading effect
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2600);
+    let imgLoaded = false;
+    let timeoutReached = false;
+
+    const checkIfDone = () => {
+      if (imgLoaded && timeoutReached) {
+        setIsLoading(false);
+      }
+    };
+
+    const img = new Image();
+    img.src = "https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876406/bilkulfinalloading_wu80gu.gif";
+    img.onload = () => {
+      imgLoaded = true;
+      checkIfDone();
+    };
+
+    const timer = setTimeout(() => {
+      timeoutReached = true;
+      checkIfDone();
+    }, 2600);
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -33,7 +54,7 @@ function App() {
     return (
       <div className="absolute inset-0 flex items-center justify-center bg-white z-50">
         <img 
-          src="https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876406/bilkulfinalloading_wu80gu.gif" 
+          src="https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876406/bilkulfinalloading_wu80gu.gif" 
           alt="Loading animation" 
           className="w-[450px] h-[450px]"
         />
