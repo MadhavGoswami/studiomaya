@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
+
 // Dummy imports for structure
 // Replace with your actual data
 // import { Project, projectData, categories } from './your-data-source';
@@ -42,6 +43,7 @@ const projectData: Project[] = [
   { id: 23, category: 'Institutional', title: 'Aarambh Primary School:', description: '"Aarambh: A Cultural Canvas in Motion"', images: ['assets/ProjectImages/Institutional/आरम्भ - Primary School/1.jpg','assets/ProjectImages/Institutional/आरम्भ - Primary School/2.jpg','assets/ProjectImages/Institutional/आरम्भ - Primary School/3.jpg'] },
   { id: 24, category: 'Competition', title: 'CPDI:"', description: '"Nyubu: A Harmonious Blend of Tradition, Modernism, and Feminine Power in Design', images: ['assets/ProjectImages/Competition/CPDI/c1.jpg','assets/ProjectImages/Competition/CPDI/c2.jpg'] },
 ];
+
 
 const attentionVariant = {
   hidden: { opacity: 0, scale: 0.95, y: 30 },
@@ -145,20 +147,20 @@ const ProjectPage: React.FC = () => {
   }, [activeCategory]);
 
   useEffect(() => {
-  const isLargeScreen = window.innerWidth >= 768;
+    const isLargeScreen = window.innerWidth >= 768;
 
-  if (!selectedProject || isPaused || !isLargeScreen) return;
+    if (!selectedProject || isPaused || !isLargeScreen) return;
 
-  const interval = setInterval(() => {
-    handleNextImage();
-  }, 1500); // or your preferred speed
+    const interval = setInterval(() => {
+      handleNextImage();
+    }, 1500); // or your preferred speed
 
-  return () => clearInterval(interval);
-}, [selectedProject, handleNextImage, isPaused]);
+    return () => clearInterval(interval);
+  }, [selectedProject, handleNextImage, isPaused]);
 
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: handleNextImage,
-    onSwipedRight: handlePrevImage,
+    onSwipedLeft: () => handleNextImage(),
+    onSwipedRight: () => handlePrevImage(),
     preventScrollOnSwipe: true,
     trackMouse: true,
   });

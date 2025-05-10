@@ -16,7 +16,6 @@ const imagesLarge = [
   '/assets/1920x1080/12.jpg',
   '/assets/1920x1080/13.jpg',
   '/assets/1920x1080/14.jpg',
-  
 ];
 
 const topSliderImages = [
@@ -76,22 +75,20 @@ const Homepage: React.FC = () => {
       <div className="flex flex-col lg:hidden h-full">
         {/* Top Section */}
         <div className="relative w-full h-1/2 overflow-hidden">
-        {topSliderImages.map((img, idx) => (
-  <img
-    key={idx}
-    src={img}
-    alt=""
-    className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out transform ${
-      idx === currentTop
-        ? 'opacity-100 scale-100 z-10'
-        : 'opacity-0 scale-100 z-0'
-    }`}
-  />
-))}
+          {topSliderImages.map((img, idx) => (
+            <img
+              key={idx}
+              src={img}
+              alt=""
+              className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out transform ${
+                idx === currentTop ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-100 z-0'
+              }`}
+            />
+          ))}
 
           <div className="absolute inset-0 bg-black opacity-30" />
           <div className="absolute inset-0 flex items-center justify-center z-20">
-            <h1 className="text-white text-4xl md:text-6xl font-extrabold drop-shadow-md hover:scale-110 transition-transform duration-300">
+            <h1 className="text-white text-4xl md:text-6xl font-extrabold drop-shadow-md hover:scale-110 transition-transform duration-300 absolute bottom-10">
               Architecture
             </h1>
           </div>
@@ -99,22 +96,20 @@ const Homepage: React.FC = () => {
 
         {/* Bottom Section */}
         <div className="relative w-full h-1/2 overflow-hidden">
-        {bottomSliderImages.map((img, idx) => (
-  <img
-    key={idx}
-    src={img}
-    alt=""
-    className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out transform ${
-      idx === currentBottom
-        ? 'opacity-100 scale-100 z-10'
-        : 'opacity-0 scale-100 z-0'
-    }`}
-  />
-))}
+          {bottomSliderImages.map((img, idx) => (
+            <img
+              key={idx}
+              src={img}
+              alt=""
+              className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out transform ${
+                idx === currentBottom ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-100 z-0'
+              }`}
+            />
+          ))}
 
           <div className="absolute inset-0 bg-black opacity-30" />
           <div className="absolute inset-0 flex items-center justify-center z-20">
-            <h1 className="text-white text-4xl md:text-6xl font-extrabold drop-shadow-md hover:scale-110 transition-transform duration-300">
+            <h1 className="text-white text-4xl md:text-6xl font-extrabold drop-shadow-md hover:scale-110 transition-transform duration-300 absolute top-10">
               Interior Design
             </h1>
           </div>
@@ -131,18 +126,16 @@ const Homepage: React.FC = () => {
       {/* Large Screens - Centered 16:9 Image Container with Zoom */}
       <div className="hidden lg:flex absolute inset-0 items-center justify-center bg-black">
         <div className="relative w-full max-w-screen aspect-[16/9] overflow-hidden">
-        {imagesLarge.map((img, idx) => (
-  <img
-    key={idx}
-    src={img}
-    alt=""
-    className={`absolute top-0 left-0 w-full h-full object-contain transition-all duration-1000 ease-in-out transform ${
-      currentLarge === idx
-        ? 'opacity-100 scale-100 z-10'
-        : 'opacity-0 scale-100 z-0'
-    }`}
-  />
-))}
+          {imagesLarge.map((img, idx) => (
+            <img
+              key={idx}
+              src={img}
+              alt=""
+              className={`absolute top-0 left-0 w-full h-full object-contain transition-all duration-1000 ease-in-out transform ${
+                currentLarge === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-100 z-0'
+              }`}
+            />
+          ))}
 
           <div className="absolute inset-0 bg-black opacity-20 z-10" />
         </div>

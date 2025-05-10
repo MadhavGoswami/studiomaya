@@ -36,9 +36,61 @@ export default function ContactUs() {
           Contact Us
         </motion.h2>
 
-        <div className="flex flex-col md:flex-row gap-8 w-full items-stretch">
+        <div className="flex flex-col lg:flex-row-reverse gap-8 w-full items-stretch">
+          {/* Contact Info Section */}
+          <div className="lg:w-1/2 w-full h-[600px] flex flex-col">
+            {[{
+              icon: <Mail className="text-blue-500 w-6 h-6" />,
+              text: "contact@studiomaya.in",
+              href: "mailto:contact@studiomaya.in",
+            },
+            {
+              icon: <Phone className="text-green-500 w-6 h-6" />,
+              text: "9711731024, 8700218168",
+              href: "tel:+1234567890",
+            },
+            {
+              icon: <Instagram className="text-pink-500 w-6 h-6" />,
+              text: "@studiomaya.in",
+              href: "https://www.instagram.com/studiomaya.in/",
+            },
+            {
+              icon: <Facebook className="text-blue-700 w-6 h-6" />,
+              text: "/studiomaya.in",
+              href: "https://www.facebook.com/studiomaya.in",
+            },
+            {
+              icon: <Linkedin className="text-sky-500 w-6 h-6" />,
+              text: "/company/studiomaya",
+              href: "https://www.linkedin.com/company/studiomaya",
+            },
+            {
+              icon: <MapPin className="text-red-500 w-6 h-6" />,
+              text: "43-D, Kamla Nagar, Delhi 110007 | A-17, Ground Floor, Sector-53, Noida-201301",
+              href: "https://goo.gl/maps/YZ7jZMxFGjU6wKxPA",
+            },
+            ].map(({ icon, text, href }, index, array) => (
+              <motion.a
+                key={index}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className={`flex items-center gap-4 p-5 bg-white rounded-xl hover:bg-gray-100 transition shadow-sm flex-1 ${index !== array.length - 1 ? "mb-4" : ""}`}
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                custom={index + 2}
+              >
+                <div>{icon}</div>
+                <div className="text-2xl break-words">{text}</div>
+              </motion.a>
+            ))}
+          </div>
+
+          {/* Google Map Section */}
           <motion.div
-            className="md:w-1/2 w-full rounded-2xl overflow-hidden shadow-md border border-gray-300 h-[600px]"
+            className="lg:w-1/2 w-full rounded-2xl overflow-hidden shadow-md border border-gray-300 h-[600px]"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
@@ -56,66 +108,12 @@ export default function ContactUs() {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </motion.div>
-
-          <div className="md:w-1/2 w-full h-[600px] flex flex-col">
-            {[
-              {
-                icon: <Mail className="text-blue-500 w-6 h-6" />,
-                text: "contact@studiomaya.in",
-                href: "mailto:contact@studiomaya.in",
-              },
-              {
-                icon: <Phone className="text-green-500 w-6 h-6" />,
-                text: "9711731024, 8700218168",
-                href: "tel:+1234567890",
-              },
-              {
-                icon: <Instagram className="text-pink-500 w-6 h-6" />,
-                text: "@studiomaya.in",
-                href: "https://www.instagram.com/studiomaya.in/",
-              },
-              {
-                icon: <Facebook className="text-blue-700 w-6 h-6" />,
-                text: "/studiomaya.in",
-                href: "https://www.facebook.com/studiomaya.in",
-              },
-              {
-                icon: <Linkedin className="text-sky-500 w-6 h-6" />,
-                text: "/company/studiomaya",
-                href: "https://www.linkedin.com/company/studiomaya",
-              },
-              {
-                icon: <MapPin className="text-red-500 w-6 h-6" />,
-                text: "43-D, Kamla Nagar, Delhi 110007 | A-17, Ground Floor, Sector-53, Noida-201301",
-                href: "https://goo.gl/maps/YZ7jZMxFGjU6wKxPA",
-              },
-            ].map(({ icon, text, href }, index, array) => (
-              <motion.a
-                key={index}
-                href={href}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                className={`flex items-center gap-4 p-5 bg-white rounded-xl hover:bg-gray-100 transition shadow-sm flex-1 ${
-                  index !== array.length - 1 ? "mb-4" : ""
-                }`}
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                custom={index + 2}
-              >
-                <div>{icon}</div>
-                <div className="text-2xl break-words">{text}</div>
-              </motion.a>
-            ))}
-          </div>
         </div>
       </div>
 
       <footer className="w-full bg-black text-white pt-12 pb-6">
         <motion.div
-           className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center text-center lg:text-left gap-12 lg:items-start lg:ml-[50px] lg:mr-auto lg:pr-8"
-
+          className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center text-center lg:text-left gap-12 lg:items-start lg:ml-[50px] lg:mr-auto lg:pr-8"
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
@@ -127,17 +125,14 @@ export default function ContactUs() {
             variants={fadeInUp}
             custom={1}
           >
-           <a href="#home">
-  <img
-    src="/assets/ProjectImages/logowhite.png"
-    alt="Studio Maya Logo"
-    className="w-60 h-auto mb-3 mx-auto cursor-pointer"
-  />
-</a>
-<p className="text-xl text-gray-300">
-  Architecture | Interior | Planning
-</p>
-
+            <a href="#home">
+              <img
+                src="/assets/ProjectImages/logowhite.png"
+                alt="Studio Maya Logo"
+                className="w-60 h-auto mb-3 mx-auto cursor-pointer"
+              />
+            </a>
+            <p className="text-xl text-gray-300">Architecture | Interior | Planning</p>
           </motion.div>
 
           <motion.div variants={fadeInUp} custom={2}>
