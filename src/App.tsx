@@ -33,7 +33,7 @@ function App() {
     return (
       <div className="absolute inset-0 flex items-center justify-center bg-white z-50">
         <img 
-          src="/assets/ProjectImages/bilkulfinalloading.gif" 
+          src="https://res.cloudinary.com/dmlvb18zu/image/upload/v1746876406/bilkulfinalloading_wu80gu.gif" 
           alt="Loading animation" 
           className="w-[450px] h-[450px]"
         />
