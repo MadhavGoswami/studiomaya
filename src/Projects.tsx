@@ -5,18 +5,6 @@ import { useSwipeable } from 'react-swipeable';
 // Dummy imports for structure
 // Replace with your actual data
 // import { Project, projectData, categories } from './your-data-source';
-
-// Define the Project type
-const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Competition'];
-
-type Project = {
-  id: number;
-  category: string;
-  title: string;
-  description: string;
-  images: string[];
-};
-
 const projectData: Project[] = [
   {
   id: 18,
@@ -322,6 +310,15 @@ const projectData: Project[] = [
 
 ];
 
+const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Competition'];
+
+type Project = {
+  id: number;
+  category: string;
+  title: string;
+  description: string;
+  images: string[];
+};
 
 const attentionVariant = {
   hidden: { opacity: 0, scale: 0.95, y: 30 },
@@ -351,6 +348,7 @@ const ProjectPage: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const imgRef = useRef<HTMLImageElement | null>(null);
+  const isThrottling = useRef(false);
 
   const filteredProjects =
     activeCategory === 'All'
@@ -370,17 +368,21 @@ const ProjectPage: React.FC = () => {
   };
 
   const handlePrevImage = useCallback(() => {
-    if (!selectedProject) return;
+    if (!selectedProject || isThrottling.current) return;
+    isThrottling.current = true;
     setCurrentImageIndex((prevIndex) =>
       prevIndex > 0 ? prevIndex - 1 : selectedProject.images.length - 1
     );
+    setTimeout(() => (isThrottling.current = false), 500);
   }, [selectedProject]);
 
   const handleNextImage = useCallback(() => {
-    if (!selectedProject) return;
+    if (!selectedProject || isThrottling.current) return;
+    isThrottling.current = true;
     setCurrentImageIndex((prevIndex) =>
       prevIndex < selectedProject.images.length - 1 ? prevIndex + 1 : 0
     );
+    setTimeout(() => (isThrottling.current = false), 500);
   }, [selectedProject]);
 
   useEffect(() => {
@@ -405,18 +407,10 @@ const ProjectPage: React.FC = () => {
   }, [selectedProject, handlePrevImage, handleNextImage]);
 
   useEffect(() => {
-    const imgElement = imgRef.current;
-    if (!imgElement) return;
-
-    imgElement.style.opacity = '0';
-    imgElement.style.transition = 'opacity 0.5s ease';
-
-    const timeout = setTimeout(() => {
-      imgElement.style.opacity = '1';
-    }, 50);
-
-    return () => clearTimeout(timeout);
-  }, [currentImageIndex]);
+    if (!selectedProject) return;
+    const img = new Image();
+    img.src = selectedProject.images[(currentImageIndex + 1) % selectedProject.images.length];
+  }, [currentImageIndex, selectedProject]);
 
   const handleLoadMore = () => setVisibleCount((prev) => prev + 8);
 
@@ -426,13 +420,10 @@ const ProjectPage: React.FC = () => {
 
   useEffect(() => {
     const isLargeScreen = window.innerWidth >= 768;
-
     if (!selectedProject || isPaused || !isLargeScreen) return;
-
     const interval = setInterval(() => {
       handleNextImage();
-    }, 1500); // or your preferred speed
-
+    }, 1000);
     return () => clearInterval(interval);
   }, [selectedProject, handleNextImage, isPaused]);
 
@@ -574,10 +565,11 @@ const ProjectPage: React.FC = () => {
                   ref={imgRef}
                   src={selectedProject.images[currentImageIndex]}
                   alt={`${selectedProject.title} ${currentImageIndex + 1}`}
-                  className="w-auto max-h-[80vh] object-contain rounded-lg shadow-lg"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
+                  loading="eager"
+                  className="object-contain w-[90vw] h-[80vh] rounded-lg shadow-lg"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
                 />
               </div>
 
