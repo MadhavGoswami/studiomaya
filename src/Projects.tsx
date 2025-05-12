@@ -5,6 +5,8 @@ import { useSwipeable } from 'react-swipeable';
 // Dummy imports for structure
 // Replace with your actual data
 // import { Project, projectData, categories } from './your-data-source';
+
+
 const projectData: Project[] = [
   {
   id: 18,
@@ -310,8 +312,6 @@ const projectData: Project[] = [
 }
 
 ];
-
-
 const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Competition'];
 
 type Project = {
@@ -500,21 +500,40 @@ const ProjectPage: React.FC = () => {
             />
             <motion.div
   className={`
-    absolute inset-0 flex flex-col items-center justify-center text-center p-4 rounded-lg
-    ${isLargeScreen ? 'bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition' : 'bg-black bg-opacity-20'}
+    absolute inset-0 rounded-lg
+    ${isLargeScreen ? 'flex flex-col items-center justify-center text-center p-4 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition' : 'bg-black bg-opacity-20'}
   `}
   initial="hidden"
   whileHover={isLargeScreen ? 'visible' : undefined}
   animate={!isLargeScreen ? 'visible' : undefined}
   variants={overlayVariant}
 >
-  <motion.h3 className={`font-bold text-white ${isLargeScreen ? 'text-3xl mb-4' : 'text-xl mb-2'}`}>
-    {project.title}
-  </motion.h3>
-  <motion.p className={`text-gray-200 ${isLargeScreen ? 'text-2xl px-[60px]' : 'text-xl px-4'}`}>
-    {project.description}
-  </motion.p>
+  {isLargeScreen ? (
+    <>
+      <motion.h3 className="font-bold text-white text-3xl mb-4">
+        {project.title}
+      </motion.h3>
+      <motion.p className="text-gray-200 text-2xl px-[60px]">
+        {project.description}
+      </motion.p>
+    </>
+  ) : (
+    <div className="absolute bottom-[10px] w-full flex justify-center">
+      <motion.h3
+  className="font-bold text-white text-2xl text-center px-4"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={attentionVariant}
+>
+  {project.title}
+</motion.h3>
+
+    </div>
+  )}
 </motion.div>
+
+
 
           </motion.div>
         ))}
