@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
 
 const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Competition'];
-
 const projectData: Project[] = [
   {
   id: 18,
@@ -343,7 +342,6 @@ const ProjectPage: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(8);
-  const [isPaused, setIsPaused] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const isThrottling = useRef(false);
@@ -407,12 +405,12 @@ const ProjectPage: React.FC = () => {
   }, [currentImageIndex, selectedProject]);
 
   useEffect(() => {
-    if (!selectedProject || isPaused || !isLargeScreen) return;
+    if (!selectedProject || !isLargeScreen) return;
     const interval = setInterval(() => {
       handleNextImage();
     }, 1000);
     return () => clearInterval(interval);
-  }, [selectedProject, handleNextImage, isPaused, isLargeScreen]);
+  }, [selectedProject, handleNextImage, isLargeScreen]);
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => handleNextImage(),
@@ -562,11 +560,7 @@ const ProjectPage: React.FC = () => {
               &times;
             </button>
 
-            <div
-              className="relative w-full flex items-center justify-center"
-              onMouseEnter={() => isLargeScreen && setIsPaused(true)}
-              onMouseLeave={() => isLargeScreen && setIsPaused(false)}
-            >
+            <div className="relative w-full flex items-center justify-center">
               {selectedProject.id !== 13 && (
                 <button
                   onClick={handlePrevImage}
