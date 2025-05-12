@@ -85,7 +85,7 @@ const AboutUs: React.FC = () => {
   <img
     src="https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746901194/pointer_qfj7r7.png"
     alt="Pointer Icon"
-    className="w-[50px] h-[50px] absolute top-2 right-2 pointer-events-none"
+    className="w-[30px] h-[30px] absolute top-2 right-2 pointer-events-none"
   />
 </div>
           <div className="mt-1 text-2xl font-semibold text-gray-800 text-center">Ar Mayank Yadav</div>

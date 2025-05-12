@@ -28,6 +28,7 @@ const projectData: Project[] = [
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876429/1_csnp5j.jpg',
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876430/2_iihkze.jpg',
+    'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876430/3_hsoxzc.jpg',
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876431/4_fm3wl2.jpg',
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876431/5_dlvcud.jpg',
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876432/6_hou7jn.jpg',
@@ -44,7 +45,7 @@ const projectData: Project[] = [
   description: 'A Vision for Urban Green Architecture',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876529/1_zdbm9t.jpg',
-    ''
+    'https://res.cloudinary.com/dmlvb18zu/image/upload/v1747031757/250512_gif_3_az89wk.gif',
   ]
 },
 
@@ -310,6 +311,7 @@ const projectData: Project[] = [
 
 ];
 
+
 const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Competition'];
 
 type Project = {
@@ -533,56 +535,70 @@ const ProjectPage: React.FC = () => {
         </motion.div>
       )}
 
-      {selectedProject && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-          <motion.div
-            className="relative w-full h-full max-h-screen flex items-center justify-center"
-            initial="hidden"
-            animate="visible"
-            variants={attentionVariant}
+  {selectedProject && (
+  <div
+    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+    onClick={closeSlider} // Tap outside to close
+  >
+    <motion.div
+      className="relative w-full h-full max-h-screen flex items-center justify-center"
+      initial="hidden"
+      animate="visible"
+      variants={attentionVariant}
+      onClick={(e) => e.stopPropagation()} // Prevent close when clicking inside
+    >
+      <button
+        onClick={closeSlider}
+        className="absolute top-4 right-6 text-white text-3xl font-bold z-10"
+      >
+        &times;
+      </button>
+
+      <div
+        className="relative w-full flex items-center justify-center"
+        onMouseEnter={() => isLargeScreen && setIsPaused(true)}
+        onMouseLeave={() => isLargeScreen && setIsPaused(false)}
+      >
+        {selectedProject.id !== 13 && (
+          <button
+            onClick={handlePrevImage}
+            className="absolute top-1/2 -translate-y-1/2 text-white p-3 text-4xl font-bold rounded-full transition left-4 lg:left-8"
           >
-            <button
-              onClick={closeSlider}
-              className="absolute top-4 right-6 text-white text-3xl font-bold"
-            >
-              &times;
-            </button>
+            &#8249;
+          </button>
+        )}
 
-            <div
-              className="relative w-full flex items-center justify-center"
-              onMouseEnter={() => isLargeScreen && setIsPaused(true)}
-              onMouseLeave={() => isLargeScreen && setIsPaused(false)}
-            >
-              <button
-                onClick={handlePrevImage}
-                className="absolute top-1/2 -translate-y-1/2 text-white p-3 text-4xl font-bold rounded-full transition left-4 lg:left-8"
-              >
-                &#8249;
-              </button>
-
-              <div {...swipeHandlers}>
-                <motion.img
-                  ref={imgRef}
-                  src={selectedProject.images[currentImageIndex]}
-                  alt={`${selectedProject.title} ${currentImageIndex + 1}`}
-                  loading="eager"
-                  className="object-contain w-[90vw] h-[80vh] rounded-lg shadow-lg"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                />
-              </div>
-
-              <button
-                onClick={handleNextImage}
-                className="absolute top-1/2 -translate-y-1/2 text-white p-3 text-4xl font-bold rounded-full transition right-4 lg:right-8"
-              >
-                &#8250;
-              </button>
-            </div>
-          </motion.div>
+        <div {...(selectedProject.id !== 13 ? swipeHandlers : {})}>
+          <motion.img
+            ref={imgRef}
+            src={
+              selectedProject.id === 13
+                ? selectedProject.images[1]
+                : selectedProject.images[currentImageIndex]
+            }
+            alt={`${selectedProject.title} ${currentImageIndex + 1}`}
+            loading="eager"
+            className="object-contain w-[90vw] h-[80vh] rounded-lg shadow-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          />
         </div>
-      )}
+
+        {selectedProject.id !== 13 && (
+          <button
+            onClick={handleNextImage}
+            className="absolute top-1/2 -translate-y-1/2 text-white p-3 text-4xl font-bold rounded-full transition right-4 lg:right-8"
+          >
+            &#8250;
+          </button>
+        )}
+      </div>
+    </motion.div>
+  </div>
+)}
+
+
     </div>
   );
 };
