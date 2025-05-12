@@ -2,10 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
 
-// Dummy imports for structure
-// Replace with your actual data
-// import { Project, projectData, categories } from './your-data-source';
-
+const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Competition'];
 
 const projectData: Project[] = [
   {
@@ -312,7 +309,6 @@ const projectData: Project[] = [
 }
 
 ];
-const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Competition'];
 
 type Project = {
   id: number;
@@ -348,7 +344,7 @@ const ProjectPage: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(8);
   const [isPaused, setIsPaused] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const isThrottling = useRef(false);
 
@@ -388,10 +384,7 @@ const ProjectPage: React.FC = () => {
   }, [selectedProject]);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024);
-    };
-    handleResize();
+    const handleResize = () => setIsLargeScreen(window.innerWidth >= 1024);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -403,7 +396,6 @@ const ProjectPage: React.FC = () => {
       else if (e.key === 'ArrowRight') handleNextImage();
       else if (e.key === 'Escape') closeSlider();
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedProject, handlePrevImage, handleNextImage]);
@@ -414,20 +406,13 @@ const ProjectPage: React.FC = () => {
     img.src = selectedProject.images[(currentImageIndex + 1) % selectedProject.images.length];
   }, [currentImageIndex, selectedProject]);
 
-  const handleLoadMore = () => setVisibleCount((prev) => prev + 8);
-
   useEffect(() => {
-    setVisibleCount(8);
-  }, [activeCategory]);
-
-  useEffect(() => {
-    const isLargeScreen = window.innerWidth >= 768;
     if (!selectedProject || isPaused || !isLargeScreen) return;
     const interval = setInterval(() => {
       handleNextImage();
     }, 1000);
     return () => clearInterval(interval);
-  }, [selectedProject, handleNextImage, isPaused]);
+  }, [selectedProject, handleNextImage, isPaused, isLargeScreen]);
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => handleNextImage(),
@@ -436,13 +421,19 @@ const ProjectPage: React.FC = () => {
     trackMouse: true,
   });
 
+  const handleLoadMore = () => setVisibleCount((prev) => prev + 8);
+
+  useEffect(() => {
+    setVisibleCount(8);
+  }, [activeCategory]);
+
   return (
     <div className="min-h-screen p-4 bg-gray-100">
       <motion.h2
         initial="hidden"
         animate="visible"
         variants={attentionVariant}
-        className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 mr-[30px] mt-[50px]"
+        className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 mt-12"
       >
         Projects
       </motion.h2>
@@ -499,42 +490,35 @@ const ProjectPage: React.FC = () => {
               className="w-full h-full object-cover rounded-lg"
             />
             <motion.div
-  className={`
-    absolute inset-0 rounded-lg
-    ${isLargeScreen ? 'flex flex-col items-center justify-center text-center p-4 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition' : 'bg-black bg-opacity-20'}
-  `}
-  initial="hidden"
-  whileHover={isLargeScreen ? 'visible' : undefined}
-  animate={!isLargeScreen ? 'visible' : undefined}
-  variants={overlayVariant}
->
-  {isLargeScreen ? (
-    <>
-      <motion.h3 className="font-bold text-white text-3xl mb-4">
-        {project.title}
-      </motion.h3>
-      <motion.p className="text-gray-200 text-2xl px-[60px]">
-        {project.description}
-      </motion.p>
-    </>
-  ) : (
-    <div className="absolute bottom-[10px] w-full flex justify-center">
-      <motion.h3
-  className="font-bold text-white text-2xl text-center px-4"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={attentionVariant}
->
-  {project.title}
-</motion.h3>
-
-    </div>
-  )}
-</motion.div>
-
-
-
+              className={`absolute inset-0 rounded-lg ${
+                isLargeScreen
+                  ? 'flex flex-col items-center justify-center text-center p-4 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition'
+                  : 'bg-black bg-opacity-20'
+              }`}
+              initial="hidden"
+              whileHover={isLargeScreen ? 'visible' : undefined}
+              animate={!isLargeScreen ? 'visible' : undefined}
+              variants={overlayVariant}
+            >
+              {isLargeScreen ? (
+                <>
+                  <motion.h3 className="font-bold text-white text-3xl mb-4">{project.title}</motion.h3>
+                  <motion.p className="text-gray-200 text-2xl px-[60px]">{project.description}</motion.p>
+                </>
+              ) : (
+                <div className="absolute bottom-[10px] w-full flex justify-center">
+                  <motion.h3
+                    className="font-bold text-white text-2xl text-center px-4"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={attentionVariant}
+                  >
+                    {project.title}
+                  </motion.h3>
+                </div>
+              )}
+            </motion.div>
           </motion.div>
         ))}
       </div>
@@ -559,70 +543,68 @@ const ProjectPage: React.FC = () => {
         </motion.div>
       )}
 
-  {selectedProject && (
-  <div
-    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
-    onClick={closeSlider} // Tap outside to close
-  >
-    <motion.div
-      className="relative w-full h-full max-h-screen flex items-center justify-center"
-      initial="hidden"
-      animate="visible"
-      variants={attentionVariant}
-      onClick={(e) => e.stopPropagation()} // Prevent close when clicking inside
-    >
-      <button
-        onClick={closeSlider}
-        className="absolute top-4 right-6 text-white text-3xl font-bold z-10"
-      >
-        &times;
-      </button>
-
-      <div
-        className="relative w-full flex items-center justify-center"
-        onMouseEnter={() => isLargeScreen && setIsPaused(true)}
-        onMouseLeave={() => isLargeScreen && setIsPaused(false)}
-      >
-        {selectedProject.id !== 13 && (
-          <button
-            onClick={handlePrevImage}
-            className="absolute top-1/2 -translate-y-1/2 text-white p-3 text-4xl font-bold rounded-full transition left-4 lg:left-8"
+      {selectedProject && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+          onClick={closeSlider}
+        >
+          <motion.div
+            className="relative w-full h-full max-h-screen flex items-center justify-center"
+            initial="hidden"
+            animate="visible"
+            variants={attentionVariant}
+            onClick={(e) => e.stopPropagation()}
           >
-            &#8249;
-          </button>
-        )}
+            <button
+              onClick={closeSlider}
+              className="absolute top-4 right-6 text-white text-3xl font-bold z-10"
+            >
+              &times;
+            </button>
 
-        <div {...(selectedProject.id !== 13 ? swipeHandlers : {})}>
-          <motion.img
-            ref={imgRef}
-            src={
-              selectedProject.id === 13
-                ? selectedProject.images[1]
-                : selectedProject.images[currentImageIndex]
-            }
-            alt={`${selectedProject.title} ${currentImageIndex + 1}`}
-            loading="eager"
-            className="object-contain w-[90vw] h-[80vh] rounded-lg shadow-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          />
+            <div
+              className="relative w-full flex items-center justify-center"
+              onMouseEnter={() => isLargeScreen && setIsPaused(true)}
+              onMouseLeave={() => isLargeScreen && setIsPaused(false)}
+            >
+              {selectedProject.id !== 13 && (
+                <button
+                  onClick={handlePrevImage}
+                  className="absolute top-1/2 -translate-y-1/2 text-white p-3 text-4xl font-bold rounded-full transition left-4 lg:left-8"
+                >
+                  &#8249;
+                </button>
+              )}
+
+              <div {...(selectedProject.id !== 13 ? swipeHandlers : {})}>
+                <motion.img
+                  ref={imgRef}
+                  src={
+                    selectedProject.id === 13
+                      ? selectedProject.images[1]
+                      : selectedProject.images[currentImageIndex]
+                  }
+                  alt={`${selectedProject.title} ${currentImageIndex + 1}`}
+                  loading="eager"
+                  className="object-contain w-[90vw] h-[80vh] rounded-lg shadow-lg"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                />
+              </div>
+
+              {selectedProject.id !== 13 && (
+                <button
+                  onClick={handleNextImage}
+                  className="absolute top-1/2 -translate-y-1/2 text-white p-3 text-4xl font-bold rounded-full transition right-4 lg:right-8"
+                >
+                  &#8250;
+                </button>
+              )}
+            </div>
+          </motion.div>
         </div>
-
-        {selectedProject.id !== 13 && (
-          <button
-            onClick={handleNextImage}
-            className="absolute top-1/2 -translate-y-1/2 text-white p-3 text-4xl font-bold rounded-full transition right-4 lg:right-8"
-          >
-            &#8250;
-          </button>
-        )}
-      </div>
-    </motion.div>
-  </div>
-)}
-
-
+      )}
     </div>
   );
 };
