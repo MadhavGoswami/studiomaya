@@ -54,7 +54,7 @@ const projectData: Project[] = [
  {
   id: 11,
   category: 'Residential',
-  title: 'Kalkaji Residence:',
+  title: 'Kalkaji Residence',
   description: 'A Fusion of Earthy Tradition and Modern Steadiness',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876519/1_m3cjow.jpg',
@@ -71,7 +71,7 @@ const projectData: Project[] = [
  {
   id: 15,
   category: 'Commercial',
-  title: 'Banquet Hall:',
+  title: 'Banquet Hall',
   description: 'A Classical Affair in Punjab',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876408/2_tqkbfg.jpg',
@@ -87,7 +87,7 @@ const projectData: Project[] = [
  {
   id: 2,
   category: 'Residential',
-  title: 'The Aurelia Estate:',
+  title: 'The Aurelia Estate',
   description: 'Neo-Classical Charm Reimagined',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876530/1_rxx3ko.jpg',
@@ -99,7 +99,7 @@ const projectData: Project[] = [
   {
   id: 1,
   category: 'Residential',
-  title: 'Aashirwad:',
+  title: 'Aashirwad',
   description: 'A Bespoke Haven of Timeless Elegance',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876472/1_h5snyk.jpg',
@@ -131,7 +131,7 @@ const projectData: Project[] = [
   {
   id: 6,
   category: 'Residential',
-  title: 'Ghaziabad Farm:',
+  title: 'Ghaziabad Farm',
   description: 'A Modern Oasis of Elegance and Tranquility',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876505/1_cveyeo.jpg',
@@ -144,7 +144,7 @@ const projectData: Project[] = [
 {
   id: 7,
   category: 'Residential',
-  title: 'Frame House: 240 Nirvana:',
+  title: 'Frame House: 240 Nirvana',
   description: 'A Neo-Classical Statement',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876504/Facade_olhw1q.gif',
@@ -155,7 +155,7 @@ const projectData: Project[] = [
  {
   id: 8,
   category: 'Residential',
-  title: 'Apartment 81: ',
+  title: 'Apartment 81 ',
   description: 'Serenity in Symmetry: A Modern Indian Home Interior',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876489/1_j5olv7.jpg',
@@ -169,7 +169,7 @@ const projectData: Project[] = [
 {
   id: 9,
   category: 'Residential',
-  title: 'Aashiyana Gurugram:',
+  title: 'Aashiyana Gurugram',
   description: 'AASHIYANA: A Refined Expression of Modern Living',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876481/1_dmmfug.jpg',
@@ -185,7 +185,7 @@ const projectData: Project[] = [
  {
   id: 10,
   category: 'Residential',
-  title: '150 Kalyan Vihar:',
+  title: '150 Kalyan Vihar',
   description: 'A Modern 3BHK Haven in North Delhi',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876470/1_bwwzbz.jpg',
@@ -195,7 +195,7 @@ const projectData: Project[] = [
 {
   id: 4,
   category: 'Residential',
-  title: 'Retirement Retreat:',
+  title: 'Retirement Retreat',
   description: 'A Symphony of Geometry and Warmth',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876541/5_ummwn9.jpg',
@@ -207,7 +207,7 @@ const projectData: Project[] = [
 {
   id: 12,
   category: 'Residential',
-  title: 'Ghaziabad Residence:',
+  title: 'Ghaziabad Residence',
   description: ' A Regal Retreat: Timeless Luxury in Contemporary Form',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876514/1_ulkekg.jpg',
@@ -221,7 +221,7 @@ const projectData: Project[] = [
   {
   id: 3,
   category: 'Residential',
-  title: 'Contemporary Enclave:',
+  title: 'Contemporary Enclave',
   description: '“A Modernist Retreat Framed by Nature’s Elegance".',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876536/View_1_yh2yet.jpg',
@@ -231,7 +231,7 @@ const projectData: Project[] = [
 {
   id: 16,
   category: 'Commercial',
-  title: 'FWS Office Aerocity:',
+  title: 'FWS Office Aerocity',
   description: 'Refined Functionality in Focus',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876420/1_adwt8a.jpg',
@@ -268,7 +268,7 @@ const projectData: Project[] = [
 {
   id: 22,
   category: 'Hospitality',
-  title: 'Base Lounge:',
+  title: 'Base Lounge',
   description: 'Timeless Indulgence: The Club Lounge Experience',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876436/1_sndmo9.jpg',
@@ -280,7 +280,7 @@ const projectData: Project[] = [
  {
   id: 21,
   category: 'Hospitality',
-  title: 'Nilyam Guest House:',
+  title: 'Nilyam Guest House',
   description: 'In quiet contemplation, learning the art of Stillness.',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876438/C1.1_vy0arq.jpg',
@@ -292,7 +292,7 @@ const projectData: Project[] = [
 {
   id: 23,
   category: 'Institutional',
-  title: 'Aarambh Primary School:',
+  title: 'Aarambh Primary School',
   description: '"Aarambh: A Cultural Canvas in Motion"',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876440/1_vv1iri.jpg',
@@ -303,7 +303,7 @@ const projectData: Project[] = [
 {
   id: 24,
   category: 'Competition',
-  title: 'CPDI:',
+  title: 'CPDI',
   description: '"Nyubu: A Harmonious Blend of Tradition, Modernism, and Feminine Power in Design',
   images: [
     'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746876434/c1_g4sr2o.jpg',
