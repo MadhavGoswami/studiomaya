@@ -498,19 +498,20 @@ const ProjectPage: React.FC = () => {
               loading="lazy"
               className="w-full h-full object-cover rounded-lg"
             />
-           <motion.div
+            <motion.div
   className={`
-    absolute inset-0 bg-black bg-opacity-50 transition flex flex-col items-center justify-center text-center p-6 rounded-lg
-    ${isLargeScreen ? 'opacity-0 hover:opacity-100' : 'opacity-100'}
+    absolute inset-0 flex flex-col items-center justify-center text-center p-4 rounded-lg
+    ${isLargeScreen ? 'bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition' : 'bg-black bg-opacity-20'}
   `}
   initial="hidden"
-  whileHover="visible"
+  whileHover={isLargeScreen ? 'visible' : undefined}
+  animate={!isLargeScreen ? 'visible' : undefined}
   variants={overlayVariant}
 >
-  <motion.h3 className="text-3xl font-bold text-white mb-4">
+  <motion.h3 className={`font-bold text-white ${isLargeScreen ? 'text-3xl mb-4' : 'text-xl mb-2'}`}>
     {project.title}
   </motion.h3>
-  <motion.p className="text-2xl text-gray-200 px-[60px]">
+  <motion.p className={`text-gray-200 ${isLargeScreen ? 'text-2xl px-[60px]' : 'text-xl px-4'}`}>
     {project.description}
   </motion.p>
 </motion.div>
