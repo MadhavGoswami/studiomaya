@@ -64,11 +64,16 @@ export default function ContactUs() {
               text: "/company/studiomaya",
               href: "https://www.linkedin.com/company/studiomaya",
             },
-            {
-              icon: <MapPin className="text-red-500 w-6 h-6" />,
-              text: "43-D, Kamla Nagar, Delhi 110007 | A-17, Ground Floor, Sector-53, Noida-201301",
-              href: "https://goo.gl/maps/YZ7jZMxFGjU6wKxPA",
-            },
+           {
+  icon: <MapPin className="text-red-500 w-6 h-6" />,
+  text: (
+    <>
+      43-D, Kamla Nagar, Delhi 110007 <span className="mx-2">|</span> A-17, Ground Floor, Sector-53, Noida-201301
+    </>
+  ),
+  href: "https://goo.gl/maps/YZ7jZMxFGjU6wKxPA",
+}
+
             ].map(({ icon, text, href }, index, array) => (
               <motion.a
                 key={index}
@@ -204,9 +209,9 @@ export default function ContactUs() {
           viewport={{ once: true }}
           custom={5}
         >
-          <p>© 2025 StudioMaya. All rights reserved.</p>
+          <p>© 2025 Studio Ma:Ya. All rights reserved.</p>
           <p className="mt-1">
-            Powered by <span className="text-white font-medium">StudioMaya</span>
+            Powered by <span className="text-white font-medium">Studio Ma:Ya</span>
           </p>
         </motion.div>
       </footer>
