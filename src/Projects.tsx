@@ -408,7 +408,7 @@ const ProjectPage: React.FC = () => {
     if (!selectedProject || !isLargeScreen) return;
     const interval = setInterval(() => {
       handleNextImage();
-    }, 1000);
+    }, 2000);
     return () => clearInterval(interval);
   }, [selectedProject, handleNextImage, isLargeScreen]);
 
