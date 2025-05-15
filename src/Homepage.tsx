@@ -139,6 +139,23 @@ const Homepage: React.FC = () => {
 
           <div className="absolute inset-0 bg-black opacity-20 z-10" />
         </div>
+
+        {/* Dot Navigation */}
+        {/* Dot Navigation */}
+<div className="absolute bottom-10 w-full flex justify-center items-center gap-3 z-20">
+  {imagesLarge.map((_, idx) => (
+    <div
+      key={idx}
+      className={`transition-all duration-300 rounded-full ${
+        idx === currentLarge
+          ? 'w-6 h-3 bg-white'
+          : 'w-4 h-2 border border-white bg-transparent'
+      }`}
+    />
+  ))}
+</div>
+
+
       </div>
     </div>
   );
