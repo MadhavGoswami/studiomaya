@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/navbar';
+
 const imagesLarge = [
   'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746869883/1_hocv1f.jpg',
   'https://res.cloudinary.com/dmlvb18zu/image/upload/f_auto,q_auto/v1746869883/2_mqvomj.jpg',
@@ -71,7 +72,7 @@ const Homepage: React.FC = () => {
       </div>
 
       {/* Small Screens - Two Image Sliders with Zoom */}
-      <div className="flex flex-col md:hidden h-full">
+      <div className="flex flex-col lg:hidden h-full">
         {/* Top Section */}
         <div className="relative w-full h-1/2 overflow-hidden">
           {topSliderImages.map((img, idx) => (
@@ -122,15 +123,15 @@ const Homepage: React.FC = () => {
         )}
       </div>
 
-      {/* Medium and Large Screens */}
-      <div className="hidden md:flex absolute inset-0 items-center justify-center bg-black">
+      {/* Large Screens - Centered 16:9 Image Container with Zoom */}
+      <div className="hidden lg:flex absolute inset-0 items-center justify-center bg-black">
         <div className="relative w-full max-w-screen aspect-[16/9] overflow-hidden">
           {imagesLarge.map((img, idx) => (
             <img
               key={idx}
               src={img}
               alt=""
-              className={`absolute top-0 left-0 w-full h-full object-cover transition-all duration-1000 ease-in-out transform ${
+              className={`absolute top-0 left-0 w-full h-full object-contain transition-all duration-1000 ease-in-out transform ${
                 currentLarge === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-100 z-0'
               }`}
             />
@@ -140,18 +141,21 @@ const Homepage: React.FC = () => {
         </div>
 
         {/* Dot Navigation */}
-        <div className="absolute bottom-10 w-full flex justify-center items-center gap-3 z-20">
-          {imagesLarge.map((_, idx) => (
-            <div
-              key={idx}
-              className={`transition-all duration-300 rounded-full ${
-                idx === currentLarge
-                  ? 'w-6 h-3 bg-white'
-                  : 'w-4 h-2 border border-white bg-transparent'
-              }`}
-            />
-          ))}
-        </div>
+        {/* Dot Navigation */}
+<div className="absolute bottom-10 w-full flex justify-center items-center gap-3 z-20">
+  {imagesLarge.map((_, idx) => (
+    <div
+      key={idx}
+      className={`transition-all duration-300 rounded-full ${
+        idx === currentLarge
+          ? 'w-6 h-3 bg-white'
+          : 'w-4 h-2 border border-white bg-transparent'
+      }`}
+    />
+  ))}
+</div>
+
+
       </div>
     </div>
   );
