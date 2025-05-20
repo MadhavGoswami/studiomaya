@@ -19,12 +19,12 @@ export const PublicationCard: React.FC<Props> = ({ publication }) => {
       {({ inView, ref }) => (
         <div
           ref={ref}
-          className={`flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden w-full h-auto md:h-[500px] transform transition-all duration-1000 ease-out ${
+          className={`flex flex-col lg:flex-row bg-white rounded-lg shadow-lg overflow-hidden w-full h-auto lg:h-[500px] transform transition-all duration-1000 ease-out ${
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
           {/* Image Section */}
-          <div className="w-full md:w-[500px] h-[300px] md:h-[500px] overflow-hidden bg-white flex items-center justify-center md:justify-start">
+          <div className="w-full lg:w-[500px] h-[300px] lg:h-[500px] overflow-hidden bg-white flex items-center justify-center lg:justify-start">
             <img
               src={publication.imageUrl}
               alt={publication.title}
@@ -33,14 +33,14 @@ export const PublicationCard: React.FC<Props> = ({ publication }) => {
           </div>
 
           {/* Text Section */}
-          <div className="p-4 sm:p-6 md:p-8 flex flex-col justify-start md:flex-1 h-full overflow-hidden md:pl-[50px] space-y-4">
+          <div className="p-4 sm:p-6 lg:p-8 flex flex-col justify-start lg:flex-1 h-full overflow-hidden lg:pl-[50px] space-y-4">
             {/* Title */}
             <div
               className={`transition-all duration-1000 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               } delay-[200ms]`}
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center md:text-left">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-center lg:text-left">
                 {publication.title}
               </h2>
             </div>
@@ -51,13 +51,13 @@ export const PublicationCard: React.FC<Props> = ({ publication }) => {
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               } delay-[400ms]`}
             >
-              <p className="text-gray-700 text-lg sm:text-xl md:text-2xl leading-relaxed text-center md:text-left">
+              <p className="text-gray-700 text-lg sm:text-xl lg:text-2xl leading-relaxed text-center lg:text-left">
                 {publication.description.length > 120 ? (
                   <>
-                    <span className="block md:hidden">
+                    <span className="block lg:hidden">
                       {publication.description.slice(0, 100)}...
                     </span>
-                    <span className="hidden md:block">{publication.description}</span>
+                    <span className="hidden lg:block">{publication.description}</span>
                   </>
                 ) : (
                   publication.description
@@ -69,7 +69,7 @@ export const PublicationCard: React.FC<Props> = ({ publication }) => {
             <div
               className={`transition-all duration-1000 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-              } delay-[600ms] flex justify-center md:justify-start`}
+              } delay-[600ms] flex justify-center lg:justify-start`}
             >
               <a
                 href={publication.link}
